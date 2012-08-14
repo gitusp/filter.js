@@ -2,7 +2,8 @@ var filter = ( function () {
 	var regMail = /^([*+!.&#$|\'\\%\/0-9a-z^_`{}=?~:-]+)@(([0-9a-z-]+\.)+[0-9a-z]{2,})$/i,
 		regUrl = /^(https?|ftp)(:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+)$/,
 		regSpecial = /<|>|&|'|"/g,
-		regZen = /[Ａ-Ｚａ-ｚ０-９ ！＂＃＄％＆＇（）＊＋，－．／：；＜＝＞？＠［＼］＾＿｀｛｜｝～/g,
+		regZen = /[Ａ-Ｚａ-ｚ０-９！＂＃＄％＆＇（）＊＋，－．／：；＜＝＞？＠［＼］＾＿｀｛｜｝～]/g,
+		regNaN = /\D/g;
 		regInt = /[0-9-]/g;
 
 	return {
@@ -47,8 +48,14 @@ var filter = ( function () {
 				if ( a != '-' || !result ) {
 					result += a;
 				}
-			}
+			} );
 			return result || false;
+		},
+		uinty : function ( s , z ) { 
+			if ( z ) { 
+				s = this.zen2han( s );
+			}
+			return s.replace( regNaN , '' );
 		},
 		zen2han : function ( s ) { 
 			return s.replace( regZen , function( a ) {
