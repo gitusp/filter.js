@@ -3,7 +3,7 @@ var filter = ( function () {
 		regUrl = /^(https?|ftp)(:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+)$/,
 		regSpecial = /<|>|&|'|"/g,
 		regZen = /[Ａ-Ｚａ-ｚ０-９！＂＃＄％＆＇（）＊＋，－．／：；＜＝＞？＠［＼］＾＿｀｛｜｝～]/g,
-		regNaN = /\D/g;
+		regNaN = /\D/g,
 		regInt = /[0-9-]/g;
 
 	return {
